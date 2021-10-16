@@ -6,25 +6,14 @@ from flask import Flask
 template = """<!DOCTYPE html>
 <html>
 <head>
-<title>
-Bitcoin
-</title>
+    <title>Bitcoin</title>
 </head>
 <body>
-<h1>
-Bitcoin Values
-</h1>
-<p>
-This is a Web Application that shows the bitcoin latest value and average over the last 10 minutes
-</p>
-<h2>
-The current BTC value in USD:
-$$replace_this1$$
-</h2>
-<h2>
-The Average value of BTC over the last 10 minutes in USD:
-$$replace_this2$$
-</h2>
+<h1 style="text-align:center">Bitcoin Values</h1>
+<p>This is a Web Application that shows the bitcoin latest value and average over the last 10 minutes</p>
+<h2>The current BTC value in USD:$$replace_this1$$</h2>
+<h2>The Average value of BTC over the last 10 minutes in USD: $$replace_this2$$ </h2>
+<img src="https://i.ytimg.com/vi/KARxDX5DTgY/maxresdefault.jpg" width="250" height="150">
 </body>
 </html>"""
 
@@ -34,22 +23,22 @@ app = Flask(__name__)
 URL = "https://min-api.cryptocompare.com/data/v2/histominute?fsym={}&tsym={}&limit={}"
 
 
-# calculate 
+# extract the value of bitcoin over the last 10 minutes and calculate average
 def get_price(coin,currency,limit):
     sum = 0
     try:
         response = requests.get(URL.format(coin,currency,limit)).json()
         for i in range(10):
             sum += response['Data']['Data'][i]['close']
-     #   data = {'price': response['Data']['Data'][9]['close'], 'average': sum/10}
+        # return the current value and the average over the last 10 minutes
         return response['Data']['Data'][9]['close'],sum/10
     except:
         return False
 
 
-#currencyPrice = get_price("BTC","USD","10")
 @app.route("/")
-def hello_world():
+def firstpage():
+    #grab the data, add them to the inline html file and return the result
     currentprice,average= get_price("BTC","USD","10")
     html_result = template.replace("$$replace_this1$$", str(currentprice))
     html_result = html_result.replace("$$replace_this2$$",str(average))
