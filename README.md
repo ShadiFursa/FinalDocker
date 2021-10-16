@@ -24,9 +24,10 @@ $ docker run -itdp 80:80 btcvalues
 Visit http://localhost:80/ in order to view the application
 
 ## Jenkins Pipeline
-The Jenkinsfile included in the repository builds and pushes the container to Dockerhub
+The Jenkinsfile included in the repository builds and pushes the container image to Dockerhub
 
 ## Note
 in order to run the jenkinspipeline the Dockerhub Creditintials must be changed to match your username and password
+
 
 
