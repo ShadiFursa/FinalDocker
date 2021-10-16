@@ -18,7 +18,7 @@ pipeline {
 		}  
 		stage('Push to Dockerhub') {
 			steps {
-				sh 'sudo docker tag hw-app shadifursa/btcvalues'
+				sh 'sudo docker tag btcvalues shadifursa/btcvalues'
 				sh 'sudo docker push shadifursa/btcvalues'
 
 			}
