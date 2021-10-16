@@ -21,7 +21,7 @@ $ git clone https://github.com/ShadiFursa/FinalDocker.git
 $ docker build -t btcvalues .
 $ docker run -itdp 80:80 btcvalues
 ```
-Visit http://localhost:5000/ in order to view the application
+Visit http://localhost:80/ in order to view the application
 
 ## Jenkins Pipeline
 The Jenkinsfile included in the repository build , runs and pushes the container to github
