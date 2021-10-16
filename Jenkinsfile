@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviroment{
+    enviroment {
 	DOCKERHUB_CREDENTIALS=credentials('dockerhub_shadi')
     }
     stages {
