@@ -13,7 +13,6 @@ Move into the project library: cd FinalDocker
 Install the requirments to run the application: pip install -r requirements.txt
 ### Step 4:
 Run the Application: python btcvalues.py
-```
 
 ## Build and Run the Application using docker
 
